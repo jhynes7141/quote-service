@@ -3,10 +3,8 @@
 /**
  * Styles for the client-facing quote approval card (Client Hub).
  *
- * The Approve button lives in `.quote-actions`, which is absolutely positioned
- * so it "floats" in the bottom-right of the card. This renders fine on wide
- * desktop viewports, but on narrow mobile screens there is no space reserved
- * for it, so it can overlap the Total line.
+ * The Approve button stacks below the summary in normal document flow, so it
+ * can never overlap the Total — including on narrow mobile viewports.
  */
 const css = `
 .quote-card {
@@ -34,10 +32,7 @@ const css = `
   font-weight: 700;
 }
 .quote-actions {
-  position: absolute;   /* floats over the card instead of stacking below the summary */
-  right: 20px;
-  bottom: 10px;
-  width: 55%;
+  margin-top: 16px;
 }
 .approve-btn {
   display: block;
@@ -49,10 +44,6 @@ const css = `
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
-}
-@media (max-width: 480px) {
-  /* No bottom space reserved for the floating button on phones. */
-  .quote-summary { padding-bottom: 0; }
 }
 `;
 
